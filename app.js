@@ -36,3 +36,6 @@ const PORT = process.env.PORT || 5000;
 // If it isn't there then check on 5000
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+
+// 55:50 youtube how far

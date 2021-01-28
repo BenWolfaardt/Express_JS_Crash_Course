@@ -1,6 +1,7 @@
 const express = require('express');
 const uuid = require('uuid');
 const router = express.Router();
+
 const members = require('../../Members');
 // the ../ takes us back a 'level' to get to the Members.js list
 
@@ -31,7 +32,7 @@ router.post('/', (req, res) => {
 // Whenever you create something on a server or add to a DB you mostly use POST
 // We can use the same route as long as its different methods
     
-    // The below just send the JSON data back that was sent in the API create call
+    // The below just send the JSON data back to that which was sent in the API create call 
     //res.send(req.body);
     // we comment it because we want to do more
     // need to use the body parser included with Express, 
@@ -47,13 +48,12 @@ router.post('/', (req, res) => {
 
     if (!newMember.name || !newMember.email) {
         return res.status(400).json({ msg: 'Please include a name and email' });
-        // if we dont do an else we will get an error "headerrs are already sent"
+        // if we dont do an else we will get an error "headers are already sent"
         // Therefore just put return in front of the res.status command
     }
 
     members.push(newMember); // push the new member to the array
     res.json(members); // send back a response, the entire array in this case
-    
 });
 
 
@@ -78,8 +78,9 @@ router.put('/:id', (req, res) => {
             if(member.id === parseInt(req.params.id)) {
                 // Below to update, if a new name is sent update, if not remain the same 
                 // the below makes use of a turnary operator
-                // the ? equals???
+                // the ? equals "if"
                 // the : equals "else"
+                // if updMember has a name then = updMember.name else = member.name (original)
                 member.name = updMember.name ? updMember.name : member.name;
                 member.email = updMember.email ? updMember.email : member.email;
 

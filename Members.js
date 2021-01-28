@@ -1,4 +1,5 @@
 const members = [
+// members above is refered to as a collection
   {
     id: 1,
     name: 'John Doe',
