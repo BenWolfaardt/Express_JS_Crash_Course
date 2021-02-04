@@ -1,7 +1,9 @@
 const express = require('express');
 // Node.js module to deal with file paths
 const path = require('path');
+const exphbs = require('express-handlebars'); // express Handlebars
 const logger = require('./middleware/logger');
+const members = require('./Members'); // Passes the Members.js array
 
 const app = express();
 
@@ -9,10 +11,29 @@ const app = express();
 // app.use(logger);
 // The above was just to demonstrate how middleware is implemented
 
+// Handlebars Middleware 
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
+// Set the view engine to handlebars and then passing exphbs and setting the default 
+// layout to a file name of main
+app.set('view engine', 'handlebars');
+// Set the view engine
+
 // Body Parser Middleware
 app.use(express.json()); // allows us to handle raw Jason
 app.use(express.urlencoded({ extended: false })); // this is to handle form submissions
 // we can now handle urlencoded data
+// This url is encoded to handle the form data
+
+// Homepage Route
+// To render the home.handlebars create a route 
+// we're not in the router anymore we're in the main index
+app.get('/', (req, res) => 
+    res.render('home', {
+        title: 'Member App',
+        members // which is the same as members: members 
+        // parsed 'title' to home.handlebars
+    })
+);
 
 
 // Originally used, but not great when you have multiple pages to load (1.8 at 2)

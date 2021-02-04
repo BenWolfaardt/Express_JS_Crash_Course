@@ -6,6 +6,7 @@ const members = require('../../Members');
 // the ../ takes us back a 'level' to get to the Members.js list
 
 // Simple REST API without a DB, just hardcoded array
+// CRUD API - Create, Read, Update, Delete
 
 // Gets All Members
 router.get('/', (req, res) => res.json(members));
@@ -41,8 +42,8 @@ router.post('/', (req, res) => {
     const newMember = { // newMember as Object
         // a DB such as MongoDB would generally create the ID for you, this is manual 
         id: uuid.v4(), // v4 is a method to generate a random universal id
-        name: req.body.name, 
-        email: req.body.email,
+        name: req.body.name, // This is now receieved from the form in home.handlebars
+        email: req.body.email, // This is now receieved from the form in home.handlebars
         status: 'active' // always set to active when a new member is created
     }
 
@@ -53,7 +54,19 @@ router.post('/', (req, res) => {
     }
 
     members.push(newMember); // push the new member to the array
-    res.json(members); // send back a response, the entire array in this case
+    res.json(members); 
+
+    // uncomment the above if you want the API to work without the handlebars form in home
+
+    // Usually the above wouldn't be used when working with templates
+    // send back a response, the entire array in this case
+    // commented the above line out towards the end of the project when working with 
+    // handlebars as we don't want to return the Jason when a new member is added using 
+    // the form but rather redirect the user to the same page by koading the same page
+    
+    //res.redirect('/');
+
+    // uncomment the above for the form to work
 });
 
 
