@@ -8,6 +8,11 @@ const members = require('../../Members');
 // Simple REST API without a DB, just hardcoded array
 // CRUD API - Create, Read, Update, Delete
 
+/* Routing – Routing is a feature that lets web applications retain webpage states through 
+ URLs. URLs can be shared with others, and users can visit the URLs to reach the state-storage 
+ page. Node.js offers a fundamental routing mechanism, in comparison to Express.js, which 
+ provides a more sophisticated routing mechanism capable of handling dynamic URLs. */
+
 // Gets All Members
 router.get('/', (req, res) => res.json(members));
 
