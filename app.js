@@ -27,6 +27,10 @@ app.use(express.urlencoded({ extended: false })); // this is to handle form subm
 // Homepage Route
 // To render the home.handlebars create a route 
 // we're not in the router anymore we're in the main index
+/* Routing – Routing is a feature that lets web applications retain webpage states through 
+ URLs. URLs can be shared with others, and users can visit the URLs to reach the state-storage 
+ page. Node.js offers a fundamental routing mechanism, in comparison to Express.js, which 
+ provides a more sophisticated routing mechanism capable of handling dynamic URLs. */
 app.get('/', (req, res) => 
     res.render('home', {
         title: 'Member App',
@@ -48,7 +52,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Members API Routes
 app.use('/api/members', require('./routes/api/members'));
-// first parameter is the 'parent route' 
+// first parameter is the 'parent route' ..
+/* Routing – Routing is a feature that lets web applications retain webpage states through 
+ URLs. URLs can be shared with others, and users can visit the URLs to reach the state-storage 
+ page. Node.js offers a fundamental routing mechanism, in comparison to Express.js, which 
+ provides a more sophisticated routing mechanism capable of handling dynamic URLs. */
 // now because 'api/members' members is specified here we dont need it in members.js
 // therefore replace it with '\'
 
